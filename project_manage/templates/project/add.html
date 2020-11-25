@@ -1,0 +1,47 @@
+{% extends "navigation.html" %}
+{% block navigation %}
+{#   这是在manages.html当中的#}
+    <div class="wrapper">
+
+
+        <!-- ============================================================== -->
+        <!-- Start Page Content here -->
+        <!-- ============================================================== -->
+
+        <div class="content-page">
+            <div class="content">
+
+                <!-- Start Content-->
+                <div class="container-fluid">
+
+                    <!-- start page title -->
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="page-title-box">
+                                <h4 class="page-title">项目添加</h4>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- end page title -->
+                    <form action="/manage/project_add/" method="post">
+                        <label>名称：</label>
+                        {{ form.name }}<br>
+                        <label>描述：</label>
+                        {{ form.describe }}<br>
+                        <label>状态：</label>
+                        {{ form.status }} <br>
+                        {% csrf_token %}
+                        <input type="submit" value="创建">
+                    </form>
+                </div>
+                <!-- end row -->
+
+            </div>
+            <!-- container -->
+
+        </div>
+        <!-- content -->
+
+
+    </div>
+{% endblock %}

@@ -1,2 +1,2 @@
-# itest_platform
-django测试平台
+# python-autoapi
+测试开发项目
