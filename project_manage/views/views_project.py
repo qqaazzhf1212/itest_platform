@@ -6,9 +6,9 @@ from project_manage.form import ProjectForm
 
 # 不允许直接进入页面
 @login_required
-def manage(request):
+def project(request):
     '''
-    管理页面
+    项目管理页面
     '''
     username = request.session.get('user', '')
     projects = Project.objects.all()
@@ -57,7 +57,7 @@ def project_edit(request, pid):
             try:
                 p = Project.objects.get(id=pid)
                 form = ProjectForm(instance=p)
-                return render(request, "project/edit.html", {"user": username, "form": form, "pid": pid})
+                return render(request, "module/module_edit.html", {"user": username, "form": form, "pid": pid})
             except Project.DoesNotExist:
                 return HttpResponseRedirect('/manage/')
 

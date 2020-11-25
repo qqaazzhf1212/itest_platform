@@ -1,5 +1,5 @@
 from django import forms
-from project_manage.models import Project
+from project_manage.models import Project, Module
 
 
 # class ProjectForm(forms.Form):
@@ -7,8 +7,16 @@ from project_manage.models import Project
 #     describe = forms.CharField(label="描述", widget=forms.Textarea)
 #     status = forms.BooleanField(label="状态", required=False)
 
+
 class ProjectForm(forms.ModelForm):
     class Meta:
         model = Project
         fields = ['name', 'describe', 'status']
+        exclude = ['create_time', 'update_time']
+
+
+class ModuleForm(forms.ModelForm):
+    class Meta:
+        model = Module
+        fields = ['project', 'name', 'describe']
         exclude = ['create_time', 'update_time']
