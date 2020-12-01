@@ -50,14 +50,14 @@ def project_edit(request, pid):
             project.describe = form.cleaned_data['describe']
             project.status = form.cleaned_data['status']
             project.save()
-            return HttpResponseRedirect('/manage/')
+        return HttpResponseRedirect('/manage/')
     else:
         # 打开表单页面，把旧的需要编辑的数据写入表单里面
         if pid:
             try:
                 p = Project.objects.get(id=pid)
                 form = ProjectForm(instance=p)
-                return render(request, "module/module_edit.html", {"user": username, "form": form, "pid": pid})
+                return render(request, "project/edit.html", {"username": username, "form": form, "pid": pid})
             except Project.DoesNotExist:
                 return HttpResponseRedirect('/manage/')
 

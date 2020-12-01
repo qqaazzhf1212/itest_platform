@@ -51,7 +51,7 @@ MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
-    # 'django.middleware.csrf.CsrfViewMiddleware',
+    # 'django.middleware.csrf.CsrfViewMiddleware',  #不做 csrf的 校验
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
@@ -62,8 +62,8 @@ ROOT_URLCONF = 'itest_platform.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
-        # 'DIRS': [os.path.join(BASE_DIR, "templates")],  # 配置django模板
+        # 'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, "templates")],  # 配置django模板
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -121,6 +121,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # https://docs.djangoproject.com/en/3.1/topics/i18n/
 
 LANGUAGE_CODE = 'en-us'
+# LANGUAGE_CODE = 'zh-hans' #中文
 
 TIME_ZONE = 'UTC'
 
@@ -134,9 +135,10 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = '/static/'
+
 STATICFILES_DIRS = [
     # BASE_DIR / "templates/static",
-    os.path.join(BASE_DIR, "project_manage/templates/static"),
+    os.path.join(BASE_DIR, "templates/static/"),
 ]
 
 SESSION_COOKIE_AGE = 1140  # 设置session的失效时间，15秒

@@ -31,7 +31,7 @@ class Migration(migrations.Migration):
                 ('describe', models.TextField(default='', verbose_name='描述')),
                 ('update_time', models.DateTimeField(auto_now=True, verbose_name='更新时间')),
                 ('create_time', models.DateTimeField(auto_now_add=True, verbose_name='创建时间')),
-                ('project', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='project_manage.project')),
+                ('project', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='project_manage1.project')),
             ],
         ),
     ]
