@@ -21,8 +21,6 @@ def project_add(request):
     '''
     项目添加
     '''
-    print(request.method)
-
     if request.method == "POST":
         form = ProjectForm(request.POST)
         if form.is_valid():
@@ -74,5 +72,5 @@ def project_delete(request, pid):
             return HttpResponseRedirect('/manage/')
         except Project.DoesNotExist:
             return HttpResponseRedirect('/manage/')
-        else:
-            return HttpResponseRedirect('/manage/')
+    else:
+        return HttpResponseRedirect('/manage/')

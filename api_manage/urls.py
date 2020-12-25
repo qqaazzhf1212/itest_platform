@@ -7,4 +7,13 @@ urlpatterns = [
     path('assert/', views.assert_result),
     path('select_data/', views.select_data),
 
+    path('add_case/', views.add_case),
+
+    path('get_case_info/<int:cid>/', views.get_case_info),
+
+    # 任务管理
+    path('get_case_tree/<int:tid>/', views.get_case_tree),
+    path('task_add/', views.task_add),
+    path('get_task/<int:tid>/', views.get_task),
+    path('edit_task/<int:tid>/', views.edit_task),
 ]

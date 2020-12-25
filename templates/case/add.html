@@ -8,7 +8,9 @@
         <div class="row" style="margin-top: 45px;">
             <div class="col-xl-6 col-lg-12 order-lg-2 order-xl-1">
                 <div class="card">
+
                     <div class="card-body">
+                        <h4 class="header-title mt-2">添加用例</h4>
                         <!-- 请求方法、URL -->
                         <div style="margin-top: 20px;height: 50px;">
                         <span style="float: left;">
@@ -89,12 +91,12 @@
     <script src="{% static "js/jquery.min.js" %}"></script>
     <script src="{% static "/jsoneditor/jsoneditor.min.js" %}"></script>
     <script src="{% static "/select/select2.min.js" %}"></script>
-{#    <script src="{% static "myselect.js" %}"></script>#}
+    <script src="{% static "myselect.js" %}"></script>
     <script src="{% static "js/my_select.js" %}"></script>
     <script type="text/javascript">
 
         //调用myselect.js文件里面的hello函数
-        {#hello("tom");#}
+        hello("tom");
         hello();
         SelectInt();
         SelectInit();
@@ -120,14 +122,14 @@
             var par = parameterEditor.get()
             var par_str = JSON.stringify(par, null, 2);
 
-            console.log("参数-->", par_str)
+            {#console.log("参数-->", par_str)#}
             // 请求参数类型
             var type = $('input[name="type"]:checked').val();
 
-            console.log("url->", url)
-            console.log("method->", method)
-            console.log("par->", par_str)
-            console.log("type->", type)
+            {#console.log("url->", url)#}
+            {#console.log("method->", method)#}
+            {#console.log("par->", par_str)#}
+            {#console.log("type->", type)#}
 
             $.post("/api/debug/", {
                 req_url: url,
@@ -157,6 +159,64 @@
 
         }
 
+        //保存用例
+        function saveCase() {
+            console.log('保存按钮');
+            //获取url的值
+            var url = $("#req_url").val();
+            //获取method的值
+            var method = $("#method").val();
+            //获取请求类型的值
+            var type = $("input[name='type']:checked").val();
+            //获取参数的值
+            var par = $("#parameterEditor").val();
+            var str_par = JSON.stringify(par, null, 2);
+            //获取返回值
+            var result = $("#result").val();
+            //获取断言
+            var assert = $("#assert").val();
+            //获取模块名
+            var cmodule = $('#selectModule').val();
+            //获取用例的名字
+            var case_name = $('#case_name').val();
+
+            console.log("url-->", url);
+            console.log("method-->", method);
+            console.log("type-->", type);
+            console.log("str_par-->", str_par);
+            console.log("cmodule-->", cmodule);
+            console.log("case_name-->", case_name);
+            console.log("result-->", result);
+            console.log("assert-->", assert);
+
+            $.post("/api/add_case/", {
+                req_url: url,
+                req_method: method,
+                req_par: str_par,
+                req_type: type,
+                assert_result: result,
+                assert_text: assert,
+                case_cmodule: cmodule,
+                case_name: case_name,
+            }, function (resp) {
+                console.log("resp-->", resp);
+                window.alert(resp.msg);
+            })
+        }
+
+        {#var getCaseInfo = function () {#}
+        {#    console.log("这个函数调用后端的一个case的信息过来");#}
+        {#    var url = window.location.href;#}
+        {#    var caseId = url.split('/')[5];#}
+        {#    console.log(caseId);#}
+        {##}
+        {#    $.get('/api/get_case_info/' + caseId + '/', {}, function (resp) {#}
+        {#        if (resp.code == 200) {#}
+        {#            console.log(resp.data.name);#}
+        {#            // 请求的url#}
+        {#            $("#req_url").val()#}
+        {#        }#}
+        {#    })#}
 
     </script>
 

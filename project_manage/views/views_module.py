@@ -70,5 +70,5 @@ def module_delete(request, mid):
             return HttpResponseRedirect('/manage/module/')
         except Module.DoesNotExist:
             return HttpResponseRedirect('/manage/module/')
-        else:
-            return HttpResponseRedirect('/manage/module/')
+    else:
+        return HttpResponseRedirect('/manage/module/')

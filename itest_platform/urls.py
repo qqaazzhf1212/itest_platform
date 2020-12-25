@@ -29,6 +29,8 @@ urlpatterns = [
     path('case/', include('case_manage.urls')),
 
     # 接口的管理
+    path('api/', include('api_manage.urls')),
 
-    path('api/', include('api_manage.urls'))
+    # 任务管理
+    path('task/', include('task_manage.urls'))
 ]

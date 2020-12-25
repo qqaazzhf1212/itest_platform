@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'project_manage.apps.ProjectManageConfig',
     'case_manage.apps.CaseConfig',
     'api_manage.apps.ApiManageConfig',
+    'task_manage.apps.TaskManageConfig',
 ]
 
 MIDDLEWARE = [
@@ -123,7 +124,7 @@ AUTH_PASSWORD_VALIDATORS = [
 LANGUAGE_CODE = 'en-us'
 # LANGUAGE_CODE = 'zh-hans' #中文
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Asia/Shanghai'
 
 USE_I18N = True
 
